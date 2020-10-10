@@ -1,5 +1,15 @@
 const Task = require('../models/Task');
 
+exports.list = (req, res) => {
+  Task.all().then((data) => {
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.json(data);
+    } else {
+      res.status(400).send();
+    }
+  });
+}
+
 exports.store = (req, res) => {
   let task = {};
   task.description = req.body.description;

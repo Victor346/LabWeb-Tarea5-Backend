@@ -4,6 +4,8 @@ const tasksController = require('../controllers/TasksController');
 
 router.get('/', homepageController.index);
 
+router.get('/tasks', tasksController.list);
+
 router.post('/tasks', tasksController.store);
 
 router.post('/delete', tasksController.delete)
